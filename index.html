@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Digital Portfolio</title>
+    <!-- 🟢 Tailwind CSS CDN (สำหรับตกแต่งหน้าตาแบบไว) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        light: '#f5f5f5',
+                        accent: '#3b82f6', // สีน้ำเงินชี้เน้น
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'], // ใช้ฟอนต์ Prompt ของ Google แนะนำให้โหลดเพิ่ม
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 🟠 Google Font (แนะนำให้ใช้ฟอนต์ไทยสวยๆ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS เพิ่มเติมเล็กน้อยสำหรับลูกเล่น */
+        body { font-family: 'Prompt', sans-serif; cursor: none; } /* ซ่อนเมาส์จริงเพื่อใช้เมาส์จำลอง */
+        .project-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2); }
+        
+        /* สไตล์ Custom Cursor */
+        #custom-cursor {
+            width: 20px; height: 20px;
+            background-color: rgba(59, 130, 246, 0.5);
+            border-radius: 50%;
+            position: fixed; pointer-events: none;
+            z-index: 9999; transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        .cursor-hover #custom-cursor { width: 50px; height: 50px; background-color: rgba(59, 130, 246, 0.2); border: 2px solid #3b82f6; }
+    </style>
+</head>
+<body class="bg-dark text-light overflow-x-hidden relative">
+
+    <!-- 🟡 Custom Cursor Div -->
+    <div id="custom-cursor"></div>
+
+    <!-- 🔵 Header / Nav -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-dark/80 backdrop-blur-sm border-b border-white/5">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold italic text-accent opacity-0 gs_reveal">NAME<span class="text-white">.DEV</span></a>
+            <div class="space-x-6 text-sm opacity-0 gs_reveal" data-gs-delay="0.2">
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-accent transition-colors border border-accent px-4 py-1.5 rounded-full hover:bg-accent hover:text-white transition-all">Contact Me</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 🔵 Hero Section (หน้าแรกสุด) -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-24 opacity-0 gs_reveal">
+        <div class="text-center px-6">
+            <h2 class="text-sm uppercase tracking-widest text-accent mb-3">Welcome to my Digital Space</h2>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Hi, I'm <span class="text-accent">[ชื่อจริงคุณ]</span><br>
+                I build cool web stuff.
+            </h1>
+            <p class="text-lg text-white/70 max-w-2xl mx-auto mb-10">
+                นักพัฒนาเว็บรุ่นใหม่ ที่หลงใหลในการสร้าง UX/UI ที่สมูทและตอบโจทย์ พร้อมที่จะ “ปล่อยของ” และเติบโตไปกับทีมที่ท้าทาย
+            </p>
+            <div class="space-x-4">
+                <a href="mailto:your.email@email.com" class="bg-accent text-white px-8 py-3 rounded-md font-semibold hover:bg-accent/80 transition-all cursor-target">ติดต่อฉัน</a>
+                <a href="#projects" class="bg-white/5 text-light px-8 py-3 rounded-md font-semibold hover:bg-white/10 transition-all cursor-target border border-white/10">ดูผลงาน (Projects)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔵 About Me Section -->
+    <section id="about" class="py-24 bg-white/5">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="opacity-0 gs_reveal gs_reveal_fromLeft">
+                <div class="w-full h-80 bg-white/10 rounded-xl border border-white/10 flex items-center justify-center text-white/30 text-sm">
+                    [ใส่รูปถ่ายครึ่งตัวสุดเท่ของคุณ]
+                </div>
+            </div>
+            <div class="opacity-0 gs_reveal">
+                <h3 class="text-4xl font-semibold mb-6">About <span class="text-accent">Me</span></h3>
+                <p class="text-white/80 mb-6 leading-relaxed">
+                    ผมชื่อ [ชื่อเล่น] ครับ เป็นคนที่ชอบเรื่องคอมพิวเตอร์มาตั้งแต่เด็ก จนได้มาจับเรื่องการเขียนเว็บ ก็ตกหลุมรักในความยืดหยุ่นและลูกเล่นที่ไม่มีที่สิ้นสุด เป้าหมายตอนนี้คืออยากเอาทักษะที่มีมาสร้างประโยชน์ให้กับองค์กร และทำให้เว็บพอร์ตนี้เป็นเครื่องยืนยันความเจ๋งของผม! ヾ(•ω•`)o
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm font-mono text-white/70">
+                    <div>> Front-end: HTML, Tailwind, JS (GSAP)</div>
+                    <div>> Back-end: (ถ้ามี ใส่เลย เช่น Node.js)</div>
+                    <div>> Tools: Git, Figma, VS Code</div>
+                    <div>> Learning: React, Three.js</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔵 Projects Section -->
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 opacity-0 gs_reveal">
+                <h3 class="text-4xl font-semibold mb-3">Featured <span class="text-accent">Work</span></h3>
+                <p class="text-white/60">รวมผลงานที่ภาคภูมิใจ พอกรุบกริบ</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card bg-white/5 rounded-lg overflow-hidden border border-white/10 opacity-0 gs_reveal gs_reveal_stagger cursor-target">
+                    <div class="h-48 bg-white/10 flex items-center justify-center text-white/30 text-sm">[รูป Project 1]</div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">My First Portfolio V1</h4>
+                        <p class="text-sm text-white/70 mb-4 h-16 overflow-hidden">เว็บพอร์ตโฟลิโอเวอร์ชันแรกที่เขียนเองสดๆ เน้น HTML/CSS พื้นฐาน เป็นจุดเริ่มต้นของทุกอย่าง...</p>
+                        <div class="flex space-x-2 text-xs font-mono text-accent">
+                            <span>HTML</span> <span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card bg-white/5 rounded-lg overflow-hidden border border-white/10 opacity-0 gs_reveal gs_reveal_stagger cursor-target" data-gs-delay="0.1">
+                    <div class="h-48 bg-accent flex items-center justify-center text-white/70 text-sm font-bold">[JS Animation Tool]</div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Animated Landing Page</h4>
+                        <p class="text-sm text-white/70 mb-4 h-16 overflow-hidden">สร้างหน้าแลนดิ้งเพจที่มีลูกเล่นแอนิเมชันตอนเลื่อนเมาส์ (ScrollTrigger) ทำให้หน้าเว็บดูมีชีวิต...</p>
+                        <div class="flex space-x-2 text-xs font-mono text-accent">
+                            <span>Tailwind</span> <span>GSAP</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-card bg-white/5 rounded-lg overflow-hidden border border-white/10 opacity-0 gs_reveal gs_reveal_stagger cursor-target" data-gs-delay="0.2">
+                    <div class="h-48 bg-white/10 flex items-center justify-center text-white/30 text-sm">[รูป Mini Game]</div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Simple JavaScript Game</h4>
+                        <p class="text-sm text-white/70 mb-4 h-16 overflow-hidden">เกมทายตัวเลขง่ายๆ ที่เขียนด้วย Vanilla JavaScript เพื่อฝึก Logic และการจัดการ DOM...</p>
+                        <div class="flex space-x-2 text-xs font-mono text-accent">
+                            <span>JS</span> <span>DOM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔵 Contact / Footer Section -->
+    <section id="contact" class="py-16 mt-24 border-t border-white/5 bg-white/[0.02]">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-semibold mb-6 opacity-0 gs_reveal">Let's Connect!</h3>
+            <p class="text-white/70 max-w-xl mx-auto mb-10 opacity-0 gs_reveal">
+                หากคุณสนใจในผลงานของผม หรืออยากพูดคุยเรื่องโอกาสในการทำงาน สามารถติดต่อผมได้ตามช่องทางด้านล่างนี้เลยครับ ผมรออ่านอยู่เสมอ!
+            </p>
+            <div class="opacity-0 gs_reveal" data-gs-delay="0.2">
+                <a href="mailto:your.email@email.com" class="text-2xl font-bold text-accent hover:text-white transition-all cursor-target">your.email@email.com</a>
+                <div class="flex justify-center space-x-8 mt-12 text-sm text-white/50">
+                    <a href="[ลิงก์ GitHub]" class="hover:text-accent">GitHub</a>
+                    <a href="[ลิงก์ LinkedIn]" class="hover:text-accent">LinkedIn</a>
+                    <a href="[ลิงก์ Resume]" class="hover:text-accent">Resume (PDF)</a>
+                </div>
+                <p class="mt-16 text-xs text-white/30 font-mono">
+                    &copy; 2026 YourName.Dev | Designed with passion.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🟠 GSAP CDN (สำหรับทำแอนิเมชันเทพๆ) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // --------------------------------------------------
+        // Part 1: GSAP Animation Reveal on Scroll
+        // --------------------------------------------------
+        gsap.registerPlugin(ScrollTrigger);
+
+        // หา element ทั้งหมดที่มี class "gs_reveal"
+        const revealElements = gsap.utils.toArray('.gs_reveal');
+
+        revealElements.forEach(function (elem) {
+            let delay = elem.getAttribute('data-gs-delay') || 0; // อ่านค่า delay ถ้ามี
+
+            // สร้าง Animation พื้นฐาน: ค่อยๆ แสดงและเลื่อนขึ้น
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 85%", // เริ่มเมื่อส่วนบนของ Element ถึง 85% ของจอ
+                    toggleActions: "play none none none" // เล่นครั้งเดียว
+                }
+            });
+
+            if (elem.classList.contains('gs_reveal_fromLeft')) {
+                // เอนิเมชันจากซ้าย
+                tl.fromTo(elem, { x: -100, opacity: 0 }, { duration: 1.2, x: 0, opacity: 1, delay: delay, ease: "power4.out" });
+            } else if (elem.classList.contains('gs_reveal_stagger')) {
+                // แอนิเมชันค่อยๆ แสดงทีละใบ (stagger) สำหรับการ์ด
+                tl.fromTo(elem, { y: 50, opacity: 0 }, { duration: 0.8, y: 0, opacity: 1, delay: delay, ease: "power2.out" });
+            } else {
+                // เอนิเมชันพื้นฐานเลื่อนขึ้น
+                tl.fromTo(elem, { y: 50, opacity: 0 }, { duration: 1, y: 0, opacity: 1, delay: delay, ease: "power3.out" });
+            }
+        });
+
+        // --------------------------------------------------
+        // Part 2: Custom Cursor Logic
+        // --------------------------------------------------
+        const cursor = document.getElementById('custom-cursor');
+        const body = document.body;
+        const targets = document.querySelectorAll('.cursor-target, a, button');
+
+        // อัปเดตตำแหน่งเมาส์จำลองตามเมาส์จริง
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+        });
+
+        // เมื่อเอาเมาส์ไปชี้ที่ target: ขยายเมาส์จำลอง
+        targets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                body.classList.add('cursor-hover');
+            });
+            target.addEventListener('mouseleave', () => {
+                body.classList.remove('cursor-hover');
+            });
+        });
+
+    </script>
+</body>
+</html>
